@@ -1,0 +1,23 @@
+{
+    
+    "name": "imthedanger",
+    "version": "1.0.0",
+    "description": "imthedgr",
+    "main": "index.html",
+    "scripts": {
+        "test": "npm run",
+        "predeploy": "npm run build",
+        "publish": "gh-pages -d dist",
+    "homepage": "https://rayanepvr.github.io/imthedanger"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://rayanepvr.github.io"
+    },
+    "keywords": [
+        "imthedanger",
+        "breakingbad"
+    ],
+    "author": "me",
+    "license": "ISC"
+}

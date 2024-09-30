@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Coming Soon</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Full-screen background image */
+        .bg-img {
+            background-image: url('static/img/logo.webp');
+            height: 100%;
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            position: relative;
+        }
+
+        /* Overlay to darken the background */
+        .overlay {
+            background-color: rgba(0, 0, 0, 0.5);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Centering content */
+        .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #fff;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin-bottom: 40px;
+        }
+
+        /* Countdown timer style */
+        .countdown {
+            display: flex;
+            justify-content: center;
+            font-size: 2em;
+        }
+
+        .countdown div {
+            margin: 0 15px;
+            text-align: center;
+        }
+
+        .countdown div span {
+            display: block;
+            font-size: 0.5em;
+            margin-top: 10px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+
+            .countdown {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="bg-img">
+    <div class="overlay"></div>
+    <div class="content">
+        <h1>Website Coming Soon</h1>
+        <p>Danger is coming soon... Stay tuned!</p>
+        <div class="countdown">
+            <div id="days">0<span>Days</span></div>
+            <div id="hours">0<span>Hours</span></div>
+            <div id="minutes">0<span>Minutes</span></div>
+            <div id="seconds">0<span>Seconds</span></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Countdown Timer
+    const countdownDate = new Date("Oct 31, 2024 23:59:59").getTime();
+
+    const countdown = setInterval(() => {
+        const now = new Date().getTime();
+        const distance = countdownDate - now;
+
+        // Calculate days, hours, minutes, and seconds
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Display the results in the corresponding HTML elements
+        document.getElementById("days").innerHTML = days + "<span>Days</span>";
+        document.getElementById("hours").innerHTML = hours + "<span>Hours</span>";
+        document.getElementById("minutes").innerHTML = minutes + "<span>Minutes</span>";
+        document.getElementById("seconds").innerHTML = seconds + "<span>Seconds</span>";
+
+        // If the countdown is over
+        if (distance < 0) {
+            clearInterval(countdown);
+            document.querySelector(".content").innerHTML = "<h1>We're Live Now!</h1>";
+        }
+    }, 1000);
+</script>
+
+</body>
+</html>
